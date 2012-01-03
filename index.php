@@ -40,20 +40,21 @@ URL - www.ramblingsoul.com
 <div id="login">
   <!-- <p><strong>Already registered ?</strong> Login here to access your account</p> -->
 <div id="loginform">
-<form action="#">
+<form name="login" method="post" action="login.php">
 <div class="formblock">
 
 <label>Username</label>
-<input name="user" type="text" class="textfields" />
+<input name="username" type="text" class="textfields" />
 </div>
 <div class="formblock">
 
-<label>Password</label><input name="user" type="password" class="textfields"/>
+<label>Password</label><input name="password" type="password" class="textfields"/>
 </div>
 <div class="formblock">
-  <input type="image" src="images/loginbutton.jpg" name="button" id="button" value="Submit" />
+ <a href="javascript:document.login.submit()">
+  <input type="image" src="images/loginbutton.jpg" name="login" id="button" value="Submit" />
+ </a>
 </div>
-
 
 <div class="clear">&nbsp;</div>
 <p>
@@ -130,7 +131,7 @@ URL - www.ramblingsoul.com
   </tr>
   <tr>
 	<td colspan=4>
-  	Tips: MobCare offer three ways to manipulate your healthcare data
+  	Tips: MobCare offer three ways to manipulate results
   	<ul>
   		<li>1) display the data in a graph</li>
   		<li>2) export to a PDF file and allow you to download it</li>
@@ -196,7 +197,7 @@ Mr. yyy
  <li><span class="imageholder">
 <img src="images/Mr_zzz.jpg" alt="Image Place Holder" width="66" height="66" />
 </span>
-<h3><a href="#">I need ECG data</a></h3>
+<h3><a href="#">I need ECG service</a></h3>
 <p class="description">
 Mr. zzz
 <span class="price">MobCare user since xxxx</span>

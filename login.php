@@ -8,13 +8,13 @@
 		exit;
 	}
 	else
-	{
+	{		
 		$db='tim_hc';
 		$dbuser='tim_hc';
 		$dbpass='lyfavour';
 		
 		mysql_connect(localhost,$dbuser,$dbpass);
-		@mysql_select_db($db) or die( "Unable to select database");
+		@mysql_select_db($db) or die(mysql_error());
 	
 		$username=$_POST['username'];
 		$password=$_POST['password'];
@@ -24,28 +24,26 @@
 		$result=mysql_query($query);	
 		$num=mysql_numrows($result);
 			
-		if (isset($_POST['login']))
-		{
-			if ($num==0) 
-			{	
-				mysql_close();
-				$host  = $_SERVER['HTTP_HOST'];
-				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-				$extra = 'error.php';
-				header("Location: http://$host$uri/$extra?code=1");
-				exit;	
-			}
-			else		
-			{
-				mysql_close();
-				# redirect to healcare page
-				$host  = $_SERVER['HTTP_HOST'];
-				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-				$extra = 'healthcare.php';
-				header("Location: http://$host$uri/$extra?username='$username'&newuser=0");
-				exit;
-			}
+		if ($num==0) 
+		{	
+			mysql_close();
+			$host  = $_SERVER['HTTP_HOST'];
+			$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+			$extra = 'error.php';
+			header("Location: http://$host$uri/$extra?code=1");
+			exit;	
 		}
+		else		
+		{
+			mysql_close();
+			# redirect to healcare page
+			$host  = $_SERVER['HTTP_HOST'];
+			$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+			$extra = 'healthcare.php';
+			header("Location: http://$host$uri/$extra?username='$username'&newuser=0");
+			exit;
+		}		
+		/*
 		else if (isset($_POST['register']))
 		{
 			if ($num==0) 
@@ -88,5 +86,7 @@
 				exit;	
 			}		
 		}
+		 * 
+		 */
 	}
 ?>
